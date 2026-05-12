@@ -17,7 +17,7 @@ void inserirSemRepetir(int v[], int valor, int *pos, int max) {
     if (*pos >= max) return;
 
     for (int i = 0; i < *pos; i++) {
-        if (v[i] == valor) return; // já existe, não insere
+        if (v[i] == valor) return;    //se não houver espaço na memória o programa retorna 
     }
 
     v[*pos] = valor;
