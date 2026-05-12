@@ -1,0 +1,59 @@
+// Atividade da Aula 08/05/2026
+
+// 1. Ler até 50 inteiros distintos e depois imprimir a lista dos números digitados;
+// 2. Aplicar leitura quando um número negativo for digitado;
+// 3. O número negativo não entra na lista;
+// 4. Usar duas funções solicitadas
+// 5. void inserirSemRepetir(int v[], int valor, int *pos, int max);
+// 6. void listar(int v[], int quantidade);
+
+
+#include <stdio.h>
+
+#define MAX 50
+
+void inserirSemRepetir(int v[], int valor, int *pos, int max) {
+    
+    if (*pos >= max) return;
+
+    for (int i = 0; i < *pos; i++) {
+        if (v[i] == valor) return; // já existe, não insere
+    }
+
+    v[*pos] = valor;
+    (*pos)++;
+}
+
+void listar(int v[], int quantidade) {
+    
+    printf("Números digitados:\n");
+    
+    for (int i = 0; i < quantidade; i++) {
+        
+        printf("%d", v[i]);
+        
+        if (i < quantidade - 1) printf(" ");
+        
+    }
+    
+    printf("\n");
+}
+
+int main(void) {
+    int v[MAX];
+    int pos = 0;
+    int valor;
+
+    while (pos < MAX) {
+        printf("Digite um inteiro negativo para parar: ");
+        if (scanf("%d", &valor) != 1) return 0;
+
+        if (valor < 0) break;
+
+        inserirSemRepetir(v, valor, &pos, MAX);
+    }
+
+    listar(v, pos);
+    return 0;
+
+}
